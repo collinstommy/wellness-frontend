@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
+	import App from '../scene/app.svelte';
+
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				refetchOnWindowFocus: false
+			}
+		}
+	});
+</script>
+
+<QueryClientProvider client={queryClient}>
+	<App />
+</QueryClientProvider>
